@@ -71,93 +71,90 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     child: Text('Tidak ada data'),
                   );
                 }
-                return Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: snapshot.data?.verses?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      detail.Verse? ayat = snapshot.data?.verses?[index];
-                      if (snapshot.data?.verses?.length == 0) {
-                        return SizedBox();
-                      }
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Card(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 5,
-                                horizontal: 15,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.green,
-                                    child: Text(
-                                      "${index + 1}",
-                                      style: TextStyle(color: Colors.white),
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: snapshot.data?.verses?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    detail.Verse? ayat = snapshot.data?.verses?[index];
+                    if (snapshot.data?.verses?.length == 0) {
+                      return SizedBox();
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Card(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 15,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.green,
+                                  child: Text(
+                                    "${index + 1}",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.bookmark_add_outlined),
                                     ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.bookmark_add_outlined),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.play_arrow),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.play_arrow),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: 20,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "${ayat?.text?.arab}",
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: 25,
                           ),
-                          Text(
-                            "${ayat?.text?.arab}",
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              fontSize: 25,
-                            ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "${ayat?.text?.transliteration?.en}",
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontStyle: FontStyle.italic,
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "${ayat?.text?.transliteration?.en}",
-                            textAlign: TextAlign.end,
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "${ayat?.translation?.id}",
+                            textAlign: TextAlign.start,
                             style: TextStyle(
                               fontSize: 18,
-                              fontStyle: FontStyle.italic,
                             ),
                           ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "${ayat?.translation?.id}",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                      ],
+                    );
+                  },
                 );
               }),
         ],
