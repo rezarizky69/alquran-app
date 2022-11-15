@@ -22,7 +22,7 @@ class IntroView extends GetView<IntroController> {
               height: 20,
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
+              padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
                 'Membaca Al-Quran semudah dalam genggaman.',
                 style: TextStyle(fontSize: 16),
@@ -41,7 +41,10 @@ class IntroView extends GetView<IntroController> {
               height: 20,
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.green),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                  shape: StadiumBorder(),
+                  fixedSize: Size(100, 50)),
               onPressed: () => Get.offAllNamed(Routes.HOME),
               child: const Text('Mulai'),
             )

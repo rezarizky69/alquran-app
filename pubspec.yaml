@@ -23,4 +23,5 @@ flutter:
 
   assets:
     - assets/lotties/
+    - assets/images/
 
