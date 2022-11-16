@@ -7,25 +7,37 @@ const BLACK1 = Color.fromARGB(255, 64, 57, 74);
 const BLACK2 = Color.fromARGB(255, 28, 20, 39);
 
 ThemeData light = ThemeData(
+  brightness: Brightness.light,
   primaryColor: GREEN1,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
     backgroundColor: GREEN1,
+    elevation: 4,
+  ),
+  textTheme: TextTheme(
+    bodyText1: TextStyle(
+      color: GREEN1,
+    ),
+    bodyText2: TextStyle(
+      color: GREEN1,
+    ),
   ),
 );
 
 ThemeData dark = ThemeData(
+  brightness: Brightness.dark,
   primaryColor: GREEN1,
   scaffoldBackgroundColor: BLACK2,
   appBarTheme: AppBarTheme(
-    backgroundColor: GREEN2,
+    backgroundColor: BLACK2,
+    elevation: 0,
   ),
   textTheme: TextTheme(
     bodyText1: TextStyle(
-      color: Colors.white,
+      color: GREEN1,
     ),
     bodyText2: TextStyle(
-      color: Colors.white,
+      color: GREEN1,
     ),
   ),
 );

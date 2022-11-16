@@ -128,9 +128,9 @@ class HomeView extends GetView<HomeController> {
               TabBar(
                 indicatorColor: GREEN1,
                 labelColor: GREEN1,
-                unselectedLabelColor: BLACK1,
+                unselectedLabelColor: Get.isDarkMode ? Colors.white : BLACK1,
                 labelStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: Get.isDarkMode ? null : FontWeight.bold,
                 ),
                 tabs: [
                   Tab(
@@ -181,10 +181,15 @@ class HomeView extends GetView<HomeController> {
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
-                              title: Text(itemSurah.name?.transliteration?.id ??
-                                  'Error...'),
+                              title: Text(
+                                itemSurah.name?.transliteration?.id ??
+                                    'Error...',
+                                style: TextStyle(color: GREEN1),
+                              ),
                               subtitle: Text(
-                                  '${itemSurah.numberOfVerses} Ayat | ${itemSurah.revelation?.id ?? 'Error...'}'),
+                                '${itemSurah.numberOfVerses} Ayat | ${itemSurah.revelation?.id ?? 'Error...'}',
+                                style: TextStyle(color: GREEN1),
+                              ),
                               trailing:
                                   Text(itemSurah.name?.short ?? 'Error...'),
                             );
@@ -192,8 +197,24 @@ class HomeView extends GetView<HomeController> {
                         );
                       },
                     ),
-                    Center(
-                      child: Text("Coming soon"),
+                    ListView.builder(
+                      itemCount: 30,
+                      itemBuilder: ((context, index) {
+                        return ListTile(
+                          onTap: () {},
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.green,
+                            child: Text(
+                              "${index + 1}",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          title: Text(
+                            "Juz ${index + 1}",
+                            style: TextStyle(color: GREEN1),
+                          ),
+                        );
+                      }),
                     ),
                     Center(
                       child: Text("Coming soon"),

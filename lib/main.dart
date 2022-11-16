@@ -10,6 +10,7 @@ void main() {
     GetMaterialApp(
       title: "Al-Quran App",
       theme: light,
+      darkTheme: dark,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

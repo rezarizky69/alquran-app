@@ -1,3 +1,4 @@
+import 'package:alquran_app/app/constants/theme.dart';
 import 'package:alquran_app/app/data/models/detail_surah.dart' as detail;
 import 'package:alquran_app/app/data/models/surah.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,12 @@ class DetailSurahView extends GetView<DetailSurahController> {
       appBar: AppBar(
         title: Text('Surah  ${surah.name?.transliteration?.id ?? 'Error... '}'),
         centerTitle: true,
-        backgroundColor: Colors.green,
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
           Card(
+            color: Get.isDarkMode ? BLACK2 : null,
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -84,6 +85,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Card(
+                          color: Get.isDarkMode ? BLACK2 : null,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                               vertical: 5,
