@@ -10,6 +10,9 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
+    if (Get.isDarkMode) {
+      controller.isDarkMode.value = true;
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Al-Quran App'),
@@ -126,12 +129,6 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               TabBar(
-                indicatorColor: GREEN1,
-                labelColor: GREEN1,
-                unselectedLabelColor: Get.isDarkMode ? Colors.white : BLACK1,
-                labelStyle: TextStyle(
-                  fontWeight: Get.isDarkMode ? null : FontWeight.bold,
-                ),
                 tabs: [
                   Tab(
                     text: "Surah",
@@ -184,11 +181,16 @@ class HomeView extends GetView<HomeController> {
                               title: Text(
                                 itemSurah.name?.transliteration?.id ??
                                     'Error...',
-                                style: TextStyle(color: GREEN1),
                               ),
-                              subtitle: Text(
-                                '${itemSurah.numberOfVerses} Ayat | ${itemSurah.revelation?.id ?? 'Error...'}',
-                                style: TextStyle(color: GREEN1),
+                              subtitle: Obx(
+                                () => Text(
+                                  '${itemSurah.numberOfVerses} Ayat | ${itemSurah.revelation?.id ?? 'Error...'}',
+                                  style: TextStyle(
+                                    color: controller.isDarkMode.isTrue
+                                        ? Colors.white.withOpacity(0.80)
+                                        : BLACK2,
+                                  ),
+                                ),
                               ),
                               trailing:
                                   Text(itemSurah.name?.short ?? 'Error...'),
@@ -223,6 +225,18 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.isDarkMode ? Get.changeTheme(light) : Get.changeTheme(dark);
+          controller.isDarkMode.toggle();
+        },
+        child: Obx(
+          () => Icon(
+            Icons.color_lens,
+            color: controller.isDarkMode.isTrue ? GREEN1 : Colors.white,
           ),
         ),
       ),

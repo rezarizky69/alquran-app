@@ -22,6 +22,26 @@ ThemeData light = ThemeData(
       color: GREEN1,
     ),
   ),
+  tabBarTheme: TabBarTheme(
+    indicator: BoxDecoration(
+      border: Border(
+        bottom: BorderSide(
+          color: GREEN1,
+        ),
+      ),
+    ),
+    labelColor: GREEN1,
+    unselectedLabelColor: BLACK1,
+    labelStyle: TextStyle(
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+  listTileTheme: ListTileThemeData(
+    textColor: GREEN1,
+  ),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: GREEN1,
+  ),
 );
 
 ThemeData dark = ThemeData(
@@ -39,5 +59,22 @@ ThemeData dark = ThemeData(
     bodyText2: TextStyle(
       color: GREEN1,
     ),
+  ),
+  tabBarTheme: TabBarTheme(
+    indicator: BoxDecoration(
+      border: Border(
+        bottom: BorderSide(
+          color: GREEN1,
+        ),
+      ),
+    ),
+    labelColor: GREEN1,
+    unselectedLabelColor: Colors.white,
+  ),
+  listTileTheme: ListTileThemeData(
+    textColor: GREEN1,
+  ),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: Colors.white,
   ),
 );

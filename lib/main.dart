@@ -9,7 +9,7 @@ void main() {
   runApp(
     GetMaterialApp(
       title: "Al-Quran App",
-      theme: light,
+      theme: dark,
       darkTheme: dark,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
